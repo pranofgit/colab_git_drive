@@ -30,7 +30,7 @@ def predict():
         output='Iris-virginica'
             
 
-    return render_template('index.html', prediction_text='The Iris plant spcies is  {0}{1}{2}'.format(output,final_features+100,model.summary()))
+    return render_template('index.html', prediction_text='The Iris plant spcies is  {0}{1}{2}'.format(output,final_features+100,model.layers[0].get_weights()[0]))
 
 
 if __name__ == "__main__":
