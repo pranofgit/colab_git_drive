@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import tensorflow as tf
 
 app = Flask(__name__)
-model = tf.keras.models.load_model('./md.h5')
+#model = tf.keras.models.load_model('./md.h5')
 
 @app.route('/')
 def home():
@@ -18,6 +18,7 @@ def predict():
     final_features = np.reshape(np.array(features),(1,4))################# change##########pipeline#########
     #prediction =np.argmax(model.predict(final_features))
     prediction=1
+    model = tf.keras.models.load_model('./md.h5')
     
     output='Error'
 
