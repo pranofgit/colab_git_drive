@@ -16,8 +16,8 @@ def predict():
     '''
     features =  [float(x) for x in request.form.values()]########## change##########pipeline########
     final_features = np.reshape(np.array(features),(1,4))################# change##########pipeline#########
-    prediction =np.argmax(model.predict(final_features))
-    
+    #prediction =np.argmax(model.predict(final_features))
+    prediction=1
     
     output='Error'
 
@@ -29,7 +29,7 @@ def predict():
         output='Iris-virginica'
             
 
-    return render_template('index.html', prediction_text='The Iris plant spcies is $ {}'.format(output))
+    return render_template('index.html', prediction_text='The Iris plant spcies is $ {}'.format(np.shape(final_features)))
 
 
 if __name__ == "__main__":
