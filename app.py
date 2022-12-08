@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import tensorflow as tf
 
 app = Flask(__name__)
-model = keras.models.load_model('./md.h5')
+model = tf.keras.models.load_model('./md.h5')
 
 @app.route('/')
 def home():
