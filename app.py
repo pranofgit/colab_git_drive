@@ -1,6 +1,7 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
-import keras
+#import keras
+import joblib
 
 app = Flask(__name__)
 #model = keras.models.load_model('./md.h5')
@@ -14,11 +15,12 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
+    model = joblib.load("./md.pkl")
     features =  [float(x) for x in request.form.values()]########## change##########pipeline########
     final_features = np.reshape(np.array(features),(1,4))################# change##########pipeline#########
-    #prediction =np.argmax(model.predict(final_features))
-    prediction=1
-    model = keras.models.load_model('./md.h5')
+    prediction =np.argmax(model.predict(final_features))
+    #prediction=1
+    
     
     output='Error'
 
@@ -30,7 +32,7 @@ def predict():
         output='Iris-virginica'
             
 
-    return render_template('index.html', prediction_text='The Iris plant spcies is  {0}{1}{2}'.format(output,final_features+100,model.layers[0].get_weights()[0]))
+    return render_template('index.html', prediction_text='The Iris plant spcies is  {0}{1}{2}'.format(output,final_features+100,'a'))
 
 
 if __name__ == "__main__":
