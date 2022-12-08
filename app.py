@@ -16,13 +16,14 @@ def predict():
     '''
     features = request.form.values()########## change##########pipeline########
     final_features = [np.array(features)]################# change##########pipeline#########
-    prediction = model.predict(final_features)
+    #prediction = model.predict(final_features)
+    prediction=0###############change this#########
     
     output='Error'
 
-    if round(prediction[0])==0:
+    if round(prediction)==0:
         output='Iris-setosa'
-    elif round(prediction[0])==1:
+    elif round(prediction)==1:
         output='Iris-versicolor'
     else:
         output='Iris-virginica'
