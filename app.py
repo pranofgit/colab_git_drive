@@ -17,6 +17,8 @@ def predict():
     int_features = [int(x) for x in request.form.values()]########## change##########pipeline########
     final_features = [np.array(int_features)]################# change##########pipeline#########
     prediction = model.predict(final_features)
+    
+    output='Error'
 
     if round(prediction[0])==0:
         output='Iris-setosa'
@@ -26,7 +28,7 @@ def predict():
         output='Iris-virginica'
             
 
-    return render_template('index.html', prediction_text='Employee Salary should be $ {}'.format(output))
+    return render_template('index.html', prediction_text='The Iris plant spcies is $ {}'.format(output))
 
 
 if __name__ == "__main__":
