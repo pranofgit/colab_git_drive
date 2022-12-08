@@ -14,8 +14,8 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    int_features = [int(x) for x in request.form.values()]########## change##########pipeline########
-    final_features = [np.array(int_features)]################# change##########pipeline#########
+    features = request.form.values()########## change##########pipeline########
+    final_features = [np.array(features)]################# change##########pipeline#########
     prediction = model.predict(final_features)
     
     output='Error'
