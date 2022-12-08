@@ -14,7 +14,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    features = request.form.values()########## change##########pipeline########
+    features =  [float(x) for x in request.form.values()]########## change##########pipeline########
     final_features = np.reshape(np.array(features),(1,4))################# change##########pipeline#########
     prediction =np.argmax(model.predict(final_features))
     
