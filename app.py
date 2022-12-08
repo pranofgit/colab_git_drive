@@ -21,9 +21,9 @@ def predict():
     
     output='Error'
 
-    if round(prediction)==0:
+    if prediction==0:
         output='Iris-setosa'
-    elif round(prediction)==1:
+    elif prediction==1:
         output='Iris-versicolor'
     else:
         output='Iris-virginica'
