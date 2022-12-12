@@ -1,10 +1,11 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
-import keras
+import tensorflow
+from tensorflow import keras
 import joblib
 
 app = Flask(__name__)
-model = joblib.load("./md.pkl")
+#model = joblib.load("./md.pkl")
 #model = keras.models.load_model('./md.h5')
 
 @app.route('/')
