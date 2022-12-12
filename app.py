@@ -4,6 +4,7 @@ from flask import Flask, request, jsonify, render_template
 import joblib
 
 app = Flask(__name__)
+model = joblib.load("./md.pkl")
 #model = keras.models.load_model('./md.h5')
 
 @app.route('/')
@@ -33,6 +34,17 @@ def predict():
             
 
     return render_template('index.html', prediction_text='The Iris plant spcies is  {0}{1}{2}'.format(output,final_features+100,'a'))
+
+@app.route('/predict_api',methods=['POST'])
+def predict_api():
+    '''
+    For direct API calls trought request
+    '''
+    data = request.get_json(force=True)
+    prediction = model.predict([np.array(list(data.values()))])
+
+    output = prediction[0]
+    return jsonify(output)
 
 
 if __name__ == "__main__":
