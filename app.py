@@ -6,7 +6,7 @@ import joblib
 
 app = Flask(__name__)
 #model = joblib.load("./md.pkl")
-#model = keras.models.load_model('./md.h5')
+model = keras.models.load_model('./md.h5')
 
 @app.route('/')
 def home():
