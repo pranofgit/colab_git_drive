@@ -1,6 +1,6 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
-#import keras
+import keras
 import joblib
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    model = joblib.load("./md.pkl")
+    #model = joblib.load("./md.pkl")
     features =  [float(x) for x in request.form.values()]########## change##########pipeline########
     final_features = np.reshape(np.array(features),(1,4))################# change##########pipeline#########
     prediction =np.argmax(model.predict(final_features))
